@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
 
 class CustomButton extends StatelessWidget {
+  final String imageUrl;
+  final String text;
+  final Color color;
+
+  CustomButton({this.imageUrl, this.text, this.color});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,7 +18,7 @@ class CustomButton extends StatelessWidget {
       width: 160,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        color: redColor,
+        color: color,
       ),
       child: Row(
         children: [
@@ -23,13 +29,13 @@ class CustomButton extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  'assets/images/icon_call.png',
+                  imageUrl,
                 ),
               ),
             ),
           ),
           Text(
-            'Call Now',
+            text,
             style: whiteTextStyle.copyWith(
               fontSize: 16,
               fontWeight: semiBold,

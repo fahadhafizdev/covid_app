@@ -103,10 +103,20 @@ class HomePage extends StatelessWidget {
             ),
             SizedBox(height: 16),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomButton(),
-                CustomButton(),
+                CustomButton(
+                  imageUrl: 'assets/images/icon_call.png',
+                  color: redColor,
+                  text: 'Call Now',
+                ),
+                SizedBox(width: 17),
+                Expanded(
+                  child: CustomButton(
+                    imageUrl: 'assets/images/icon_message.png',
+                    color: greenColor,
+                    text: 'Send SMS',
+                  ),
+                ),
               ],
             ),
           ],
@@ -114,10 +124,12 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    return Column(
-      children: [
-        headerContent(),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          headerContent(),
+        ],
+      ),
     );
   }
 }
