@@ -1,8 +1,13 @@
+import 'package:covid_app/ui/page/home_page.dart';
 import 'package:covid_app/ui/widget/custom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
 
 class MainPage extends StatelessWidget {
+  Widget buildContent() {
+    return HomePage();
+  }
+
   Widget customButtonNavigation() {
     return Align(
       alignment: Alignment.bottomCenter,
@@ -52,6 +57,7 @@ class MainPage extends StatelessWidget {
       backgroundColor: bgColor,
       body: Stack(
         children: [
+          buildContent(),
           customButtonNavigation(),
         ],
       ),
