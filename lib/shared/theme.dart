@@ -8,7 +8,8 @@ Color greenColor = Color(0xff4CD97B);
 Color purpleColor = Color(0xff9059FF);
 Color mainColor = Color(0xff57BEF7);
 Color whiteColor = Color(0xffFFFFFF);
-
+Color greyColor = Color(0xff999FBF);
+Color bgColor = Color(0xffFAFAFA);
 TextStyle blackTextStyle = GoogleFonts.poppins(color: blackColor);
 
 FontWeight light = FontWeight.w300;
