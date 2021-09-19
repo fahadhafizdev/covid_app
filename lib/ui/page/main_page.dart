@@ -20,10 +20,26 @@ class MainPage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            CustomNavigaton(),
-            CustomNavigaton(),
-            CustomNavigaton(),
-            CustomNavigaton(),
+            CustomNavigaton(
+              imageUrl: 'assets/images/icon_home.png',
+              isActive: true,
+              index: 0,
+            ),
+            CustomNavigaton(
+              imageUrl: 'assets/images/icon_statistic.png',
+              isActive: false,
+              index: 1,
+            ),
+            CustomNavigaton(
+              imageUrl: 'assets/images/icon_book.png',
+              isActive: false,
+              index: 2,
+            ),
+            CustomNavigaton(
+              imageUrl: 'assets/images/icon_info.png',
+              isActive: false,
+              index: 3,
+            ),
           ],
         ),
       ),
