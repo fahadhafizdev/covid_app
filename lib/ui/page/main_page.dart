@@ -1,3 +1,4 @@
+import 'package:covid_app/ui/widget/custom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
 
@@ -17,24 +18,12 @@ class MainPage extends StatelessWidget {
           color: whiteColor,
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(
-                vertical: 6,
-                horizontal: 16,
-              ),
-              height: 36,
-              width: 56,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: mainColor,
-              ),
-              child: Image.asset(
-                'assets/images/icon_home.png',
-                height: 18,
-                width: 18,
-              ),
-            ),
+            CustomNavigaton(),
+            CustomNavigaton(),
+            CustomNavigaton(),
+            CustomNavigaton(),
           ],
         ),
       ),
