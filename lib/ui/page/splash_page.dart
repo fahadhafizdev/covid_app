@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:covid_app/shared/theme.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -17,7 +18,16 @@ class SplashPage extends StatelessWidget {
             ),
           ),
           Container(
+            margin: EdgeInsets.only(bottom: 45),
             alignment: Alignment.bottomCenter,
+            child: Text(
+              'COVID -19\nMONITORING',
+              textAlign: TextAlign.center,
+              style: blackTextStyle.copyWith(
+                fontWeight: semiBold,
+                fontSize: 24,
+              ),
+            ),
           ),
         ],
       ),
