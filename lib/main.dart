@@ -12,7 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Covid App',
       debugShowCheckedModeBanner: false,
-      home: MainPage(),
+      routes: {
+        '/': (context) => SplashPage(),
+        '/home': (context) => MainPage(),
+      },
+      initialRoute: '/',
     );
   }
 }
