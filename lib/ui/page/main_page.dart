@@ -1,5 +1,8 @@
 import 'package:covid_app/cubit/page_cubit.dart';
 import 'package:covid_app/ui/page/home_page.dart';
+import 'package:covid_app/ui/page/info_page.dart';
+import 'package:covid_app/ui/page/news_page.dart';
+import 'package:covid_app/ui/page/statistic_page.dart';
 import 'package:covid_app/ui/widget/custom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
@@ -12,6 +15,12 @@ class MainPage extends StatelessWidget {
       switch (currentIndex) {
         case 0:
           return HomePage();
+        case 1:
+          return StatisticPage();
+        case 2:
+          return NewsPage();
+        case 3:
+          return InfoPage();
         default:
           return HomePage();
       }
@@ -36,22 +45,18 @@ class MainPage extends StatelessWidget {
             children: [
               CustomNavigaton(
                 imageUrl: 'assets/images/icon_home.png',
-                isActive: true,
                 index: 0,
               ),
               CustomNavigaton(
                 imageUrl: 'assets/images/icon_statistic.png',
-                isActive: false,
                 index: 1,
               ),
               CustomNavigaton(
                 imageUrl: 'assets/images/icon_book.png',
-                isActive: false,
                 index: 2,
               ),
               CustomNavigaton(
                 imageUrl: 'assets/images/icon_info.png',
-                isActive: false,
                 index: 3,
               ),
             ],
