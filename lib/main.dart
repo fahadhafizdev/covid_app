@@ -1,3 +1,4 @@
+import 'package:covid_app/cubit/covid_cubit.dart';
 import 'package:covid_app/cubit/page_cubit.dart';
 import 'package:covid_app/ui/page/main_page.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => PageCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CovidCubit(),
         ),
       ],
       child: MaterialApp(

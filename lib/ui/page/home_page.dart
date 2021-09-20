@@ -1,10 +1,23 @@
+import 'package:covid_app/cubit/covid_cubit.dart';
 import 'package:covid_app/ui/widget/custom_button_widget.dart';
 import 'package:covid_app/ui/widget/custom_card_widget.dart';
 import 'package:covid_app/ui/widget/custom_prevention_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    context.read<CovidCubit>().fetchCovidData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget headerContent() {
@@ -127,51 +140,62 @@ class HomePage extends StatelessWidget {
     }
 
     Widget bodyContent() {
-      return Container(
-        margin: EdgeInsets.symmetric(
-          vertical: 30,
-          horizontal: defaultMargin,
-        ),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: CustomCard(
-                    name: 'Affected',
-                    amount: 336.851,
+      return BlocConsumer<CovidCubit, CovidState>(listener: (context, state) {
+        if (state is CovidFailed) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.error)),
+          );
+        }
+      }, builder: (context, state) {
+        if (state is CovidSuccess) {
+          print(state.covidData);
+        }
+        return Container(
+          margin: EdgeInsets.symmetric(
+            vertical: 30,
+            horizontal: defaultMargin,
+          ),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomCard(
+                      name: 'Affected',
+                      amount: 336.851,
+                    ),
                   ),
-                ),
-                SizedBox(width: 16),
-                Expanded(
-                  child: CustomCard(
-                    name: 'Death',
-                    amount: 9.620,
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: CustomCard(
+                      name: 'Death',
+                      amount: 9.620,
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 16),
-            Row(
-              children: [
-                Expanded(
-                  child: CustomCard(
-                    name: 'Recovered',
-                    amount: 336.851,
+                ],
+              ),
+              SizedBox(height: 16),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomCard(
+                      name: 'Recovered',
+                      amount: 336.851,
+                    ),
                   ),
-                ),
-                SizedBox(width: 16),
-                Expanded(
-                  child: CustomCard(
-                    name: 'Global Affected',
-                    amount: 9.620,
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: CustomCard(
+                      name: 'Global Affected',
+                      amount: 9.620,
+                    ),
                   ),
-                ),
-              ],
-            )
-          ],
-        ),
-      );
+                ],
+              )
+            ],
+          ),
+        );
+      });
     }
 
     Widget titlePrevention() {
