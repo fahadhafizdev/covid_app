@@ -1,4 +1,6 @@
 import 'package:covid_app/ui/widget/custom_button_widget.dart';
+import 'package:covid_app/ui/widget/custom_card_widget.dart';
+import 'package:covid_app/ui/widget/custom_prevention_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
 
@@ -124,10 +126,95 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget bodyContent() {
+      return Container(
+        margin: EdgeInsets.symmetric(
+          vertical: 30,
+          horizontal: defaultMargin,
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: CustomCard(
+                    name: 'Affected',
+                    amount: 336.851,
+                  ),
+                ),
+                SizedBox(width: 16),
+                Expanded(
+                  child: CustomCard(
+                    name: 'Death',
+                    amount: 9.620,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomCard(
+                    name: 'Recovered',
+                    amount: 336.851,
+                  ),
+                ),
+                SizedBox(width: 16),
+                Expanded(
+                  child: CustomCard(
+                    name: 'Global Affected',
+                    amount: 9.620,
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      );
+    }
+
+    Widget titlePrevention() {
+      return Padding(
+        padding: EdgeInsets.only(left: defaultMargin),
+        child: Text(
+          'Prevention',
+          style: blackTextStyle.copyWith(
+            fontWeight: semiBold,
+            fontSize: 20,
+          ),
+        ),
+      );
+    }
+
+    Widget preventionContent() {
+      return Container(
+        height: 150,
+        margin: EdgeInsets.only(
+          left: defaultMargin,
+          right: defaultMargin,
+          top: defaultMargin,
+          bottom: 100,
+        ),
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            CustomPrevention(),
+            CustomPrevention(),
+            CustomPrevention(),
+          ],
+        ),
+      );
+    }
+
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           headerContent(),
+          bodyContent(),
+          titlePrevention(),
+          preventionContent(),
         ],
       ),
     );
