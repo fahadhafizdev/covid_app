@@ -199,9 +199,18 @@ class HomePage extends StatelessWidget {
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [
-            CustomPrevention(),
-            CustomPrevention(),
-            CustomPrevention(),
+            CustomPrevention(
+              imgUrl: 'assets/images/prevention1.png',
+              text: 'Avoid close\ncontact',
+            ),
+            CustomPrevention(
+              imgUrl: 'assets/images/prevention2.png',
+              text: 'Clean your\nhands often',
+            ),
+            CustomPrevention(
+              imgUrl: 'assets/images/prevention3.png',
+              text: 'Wear a\nfacemask',
+            ),
           ],
         ),
       );
