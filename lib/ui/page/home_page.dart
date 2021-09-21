@@ -1,6 +1,8 @@
 import 'package:covid_app/cubit/covid_cubit.dart';
+import 'package:covid_app/models/covid_model.dart';
 import 'package:covid_app/ui/widget/custom_button_widget.dart';
 import 'package:covid_app/ui/widget/custom_card_widget.dart';
+import 'package:covid_app/ui/widget/custom_merge_card_widget.dart';
 import 'package:covid_app/ui/widget/custom_prevention_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
@@ -139,63 +141,47 @@ class _HomePageState extends State<HomePage> {
       );
     }
 
-    Widget bodyContent() {
-      return BlocConsumer<CovidCubit, CovidState>(listener: (context, state) {
-        if (state is CovidFailed) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.error)),
-          );
-        }
-      }, builder: (context, state) {
-        if (state is CovidSuccess) {
-          print(state.covidData);
-        }
-        return Container(
-          margin: EdgeInsets.symmetric(
-            vertical: 30,
-            horizontal: defaultMargin,
-          ),
-          child: Column(
+    Widget bodyContent(CovidModel data) {
+      return Column(
+        children: [
+          Row(
             children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomCard(
-                      name: 'Affected',
-                      amount: 336.851,
-                    ),
-                  ),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: CustomCard(
-                      name: 'Death',
-                      amount: 9.620,
-                    ),
-                  ),
-                ],
+              Expanded(
+                child: CustomCard(
+                  name: 'Affected',
+                  amount: data.positif,
+                ),
               ),
-              SizedBox(height: 16),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomCard(
-                      name: 'Recovered',
-                      amount: 336.851,
-                    ),
-                  ),
-                  SizedBox(width: 16),
-                  Expanded(
-                    child: CustomCard(
-                      name: 'Global Affected',
-                      amount: 9.620,
-                    ),
-                  ),
-                ],
-              )
+              SizedBox(width: 16),
+              Expanded(
+                child: CustomCard(
+                  name: 'Death',
+                  amount: data.meninggal,
+                ),
+              ),
             ],
           ),
-        );
-      });
+          SizedBox(height: 16),
+          Row(
+            children: [
+              Expanded(
+                child: CustomCard(
+                  name: 'Recovered',
+                  amount: data.sembuh,
+                ),
+              ),
+              SizedBox(width: 16),
+              Expanded(
+                flex: 2,
+                child: CustomCard(
+                  name: 'Hospitalized',
+                  amount: data.dirawat,
+                ),
+              ),
+            ],
+          )
+        ],
+      );
     }
 
     Widget titlePrevention() {
@@ -245,7 +231,37 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           headerContent(),
-          bodyContent(),
+          BlocConsumer<CovidCubit, CovidState>(listener: (context, state) {
+            if (state is CovidFailed) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text(state.error)),
+              );
+            }
+          }, builder: (context, state) {
+            if (state is CovidSuccess) {
+              return Container(
+                margin: EdgeInsets.symmetric(
+                  vertical: 30,
+                  horizontal: defaultMargin,
+                ),
+                width: double.infinity,
+                height: 250,
+                child: ListView(
+                  physics: NeverScrollableScrollPhysics(),
+                  children: state.covidData
+                      .map(
+                        (data) => bodyContent(data),
+                      )
+                      .toList(),
+                ),
+              );
+            }
+            return Container(
+              height: 250,
+              alignment: Alignment.center,
+              child: CircularProgressIndicator(),
+            );
+          }),
           titlePrevention(),
           preventionContent(),
         ],

@@ -22,7 +22,7 @@ class CovidFailed extends CovidState {
 }
 
 class CovidSuccess extends CovidState {
-  List<CovidModel> covidData;
+  final List<CovidModel> covidData;
   CovidSuccess(this.covidData);
 
   @override

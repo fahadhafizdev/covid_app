@@ -3,7 +3,7 @@ import 'package:covid_app/shared/theme.dart';
 
 class CustomCard extends StatelessWidget {
   final String name;
-  final double amount;
+  final String amount;
 
   CustomCard({this.name, this.amount});
 
@@ -20,7 +20,7 @@ class CustomCard extends StatelessWidget {
             ? creamColor
             : (name == 'Death')
                 ? redColor
-                : (name == 'Global Affected')
+                : (name == 'Hospitalized')
                     ? purpleColor
                     : greenColor,
         borderRadius: BorderRadius.circular(8),
@@ -36,10 +36,10 @@ class CustomCard extends StatelessWidget {
             ),
           ),
           Text(
-            '$amount',
+            amount,
             style: whiteTextStyle.copyWith(
               fontWeight: semiBold,
-              fontSize: 24,
+              fontSize: 20,
             ),
           )
         ],
