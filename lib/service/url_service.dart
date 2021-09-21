@@ -20,7 +20,7 @@ class UrlService {
     }
   }
 
-  Future<void> showMyDialog(context, String text) async {
+  Future<void> showMyDialog(BuildContext context, String text) async {
     Future<void> _launched;
     String _phone = '081235766099';
 
