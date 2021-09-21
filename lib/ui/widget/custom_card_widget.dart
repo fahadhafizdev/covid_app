@@ -39,7 +39,7 @@ class CustomCard extends StatelessWidget {
             amount,
             style: whiteTextStyle.copyWith(
               fontWeight: semiBold,
-              fontSize: 20,
+              fontSize: 18,
             ),
           )
         ],

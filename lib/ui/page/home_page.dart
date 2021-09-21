@@ -2,7 +2,7 @@ import 'package:covid_app/cubit/covid_cubit.dart';
 import 'package:covid_app/models/covid_model.dart';
 import 'package:covid_app/ui/widget/custom_button_widget.dart';
 import 'package:covid_app/ui/widget/custom_card_widget.dart';
-import 'package:covid_app/ui/widget/custom_merge_card_widget.dart';
+
 import 'package:covid_app/ui/widget/custom_prevention_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
@@ -166,16 +166,16 @@ class _HomePageState extends State<HomePage> {
             children: [
               Expanded(
                 child: CustomCard(
-                  name: 'Recovered',
-                  amount: data.sembuh,
+                  name: 'Hospitalized',
+                  amount: data.dirawat,
                 ),
               ),
               SizedBox(width: 16),
               Expanded(
                 flex: 2,
                 child: CustomCard(
-                  name: 'Hospitalized',
-                  amount: data.dirawat,
+                  name: 'Recovered',
+                  amount: data.sembuh,
                 ),
               ),
             ],
