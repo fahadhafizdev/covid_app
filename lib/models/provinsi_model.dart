@@ -14,4 +14,13 @@ class ProvinsiModel {
     this.fid,
     this.kodeProvinsi,
   });
+
+  factory ProvinsiModel.fromJson(json) => ProvinsiModel(
+        fid: json['attributes']['FID'],
+        kodeProvinsi: json['attributes']['Kode_Provi'],
+        provinsi: json['attributes']['Provinsi'],
+        positif: json['attributes']['Kasus_Posi'],
+        meninggal: json['attributes']['Kasus_Meni'],
+        sembuh: json['attributes']['Kasus_Sem'],
+      );
 }
