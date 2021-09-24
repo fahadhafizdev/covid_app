@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:covid_app/models/provinsi_model.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/models/covid_model.dart';
 import 'package:http/http.dart' as http;
@@ -9,23 +10,12 @@ class CovidService {
     try {
       var response = await http.get(
         Uri.parse('https://api.kawalcorona.com/indonesia/'),
-        headers: {
-          "Access-Control-Allow-Origin":
-              "*", // Required for CORS support to work
-
-          "Access-Control-Allow-Headers":
-              "Origin,Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,locale",
-          "Access-Control-Allow-Methods": "GET, HEAD",
-        },
       );
 
       print('status code: ${response.statusCode}');
       print('body : ${response.body}');
 
       if (response.statusCode == 200) {
-        // var data = jsonDecode(response.body);
-        // CovidModel covidData = CovidModel.fromJson(data);
-        // print(covidData);
         List data = jsonDecode(response.body);
         List<CovidModel> covidData =
             data.map((e) => CovidModel.fromJson(e)).toList();
@@ -35,6 +25,29 @@ class CovidService {
         return covidData;
       } else {
         return null;
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<List<ProvinsiModel>> fetchDataProvinsi() async {
+    try {
+      var response = await http.get(
+        Uri.parse('https://api.kawalcorona.com/indonesia/provinsi/'),
+      );
+      print('status code: ${response.statusCode}');
+      print('body : ${response.body}');
+
+      if (response.statusCode == 200) {
+        List data = jsonDecode(response.body);
+        List<ProvinsiModel> provinsiData = data.map(
+          (e) => ProvinsiModel.fromJson(e),
+        );
+
+        return provinsiData;
+      } else {
+        return [];
       }
     } catch (e) {
       throw e;
