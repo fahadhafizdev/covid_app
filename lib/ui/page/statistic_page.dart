@@ -82,22 +82,30 @@ class StatisticPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
-                CustomListProvinsi(),
+                CustomListProvinsi(
+                  provinsi: 'Bengkulu',
+                  kasus_positif: 10002,
+                ),
+                CustomListProvinsi(
+                  provinsi: 'Bengkulu',
+                  kasus_positif: 10002,
+                ),
+                CustomListProvinsi(
+                  provinsi: 'Bengkulu',
+                  kasus_positif: 10002,
+                ),
+                CustomListProvinsi(
+                  provinsi: 'Bengkulu',
+                  kasus_positif: 10002,
+                ),
+                CustomListProvinsi(
+                  provinsi: 'Bengkulu',
+                  kasus_positif: 10002,
+                ),
+                CustomListProvinsi(
+                  provinsi: 'Bengkulu',
+                  kasus_positif: 10002,
+                ),
                 SizedBox(height: 100),
               ],
             ),
