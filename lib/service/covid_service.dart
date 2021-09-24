@@ -41,9 +41,8 @@ class CovidService {
 
       if (response.statusCode == 200) {
         List data = jsonDecode(response.body);
-        List<ProvinsiModel> provinsiData = data.map(
-          (e) => ProvinsiModel.fromJson(e),
-        );
+        List<ProvinsiModel> provinsiData =
+            data.map((e) => ProvinsiModel.fromJson(e)).toList();
 
         return provinsiData;
       } else {
