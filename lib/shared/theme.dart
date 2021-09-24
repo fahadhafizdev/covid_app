@@ -16,6 +16,7 @@ Color whiteBlueColor = Color(0xffD0EBFA);
 
 TextStyle blackTextStyle = GoogleFonts.poppins(color: blackColor);
 TextStyle whiteTextStyle = GoogleFonts.poppins(color: whiteColor);
+TextStyle mainTextStyle = GoogleFonts.poppins(color: mainColor);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;

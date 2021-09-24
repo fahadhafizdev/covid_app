@@ -1,4 +1,5 @@
 import 'package:covid_app/shared/theme.dart';
+import 'package:covid_app/ui/widget/custom_list_provinsi_widget.dart';
 import 'package:flutter/material.dart';
 
 class StatisticPage extends StatelessWidget {
@@ -80,14 +81,18 @@ class StatisticPage extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Container(
-                  height: 45,
-                  width: 310,
-                  decoration: BoxDecoration(
-                    color: whiteColor,
-                    borderRadius: BorderRadius.circular(11),
-                  ),
-                ),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
               ],
             ),
           ),
