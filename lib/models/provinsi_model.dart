@@ -1,4 +1,6 @@
-class ProvinsiModel {
+import 'package:equatable/equatable.dart';
+
+class ProvinsiModel extends Equatable {
   final int fid;
   final int kodeProvinsi;
   final String provinsi;
@@ -23,4 +25,15 @@ class ProvinsiModel {
         meninggal: json['attributes']['Kasus_Meni'],
         sembuh: json['attributes']['Kasus_Sem'],
       );
+
+  @override
+  // TODO: implement props
+  List<Object> get props => [
+        fid,
+        positif,
+        sembuh,
+        meninggal,
+        kodeProvinsi,
+        provinsi,
+      ];
 }
