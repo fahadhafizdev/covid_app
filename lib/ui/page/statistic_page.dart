@@ -66,9 +66,10 @@ class StatisticPage extends StatelessWidget {
             height: 328,
           ),
           Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 49,
-              horizontal: 30,
+            padding: EdgeInsets.only(
+              top: 49,
+              left: 15,
+              right: 15,
             ),
             width: double.infinity,
             decoration: BoxDecoration(
@@ -93,6 +94,11 @@ class StatisticPage extends StatelessWidget {
                 CustomListProvinsi(),
                 CustomListProvinsi(),
                 CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                CustomListProvinsi(),
+                SizedBox(height: 100),
               ],
             ),
           ),

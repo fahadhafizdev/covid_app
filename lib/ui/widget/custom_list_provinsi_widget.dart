@@ -23,11 +23,15 @@ class CustomListProvinsi extends StatelessWidget {
             'assets/images/icon_map.png',
             height: 33,
           ),
-          Text(
-            'DKI Jakarta',
-            style: blackTextStyle.copyWith(
-              fontWeight: semiBold,
-              fontSize: 14,
+          Container(
+            width: 140,
+            child: Text(
+              'DKI Jakarta Selatan sssss',
+              style: blackTextStyle.copyWith(
+                fontWeight: semiBold,
+                fontSize: 14,
+              ),
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           Text.rich(
