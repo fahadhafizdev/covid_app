@@ -6,7 +6,7 @@ class InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-        vertical: 30,
+        vertical: 50,
         horizontal: defaultMargin,
       ),
       child: Column(
@@ -42,6 +42,15 @@ class InfoPage extends StatelessWidget {
           ),
           Text(
             'https://www.freepik.com/vectors/infographic',
+            style: blackTextStyle.copyWith(
+              fontWeight: light,
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            'https://www.pngfind.com/download/hxhwTJR_vector-peta-indonesia-cdr-png-hd-peta-indonesia/',
             style: blackTextStyle.copyWith(
               fontWeight: light,
             ),
