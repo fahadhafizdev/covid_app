@@ -1,6 +1,8 @@
+import 'package:covid_app/cubit/provinsi_cubit.dart';
 import 'package:covid_app/shared/theme.dart';
 import 'package:covid_app/ui/widget/custom_list_provinsi_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StatisticPage extends StatelessWidget {
   @override
@@ -80,47 +82,58 @@ class StatisticPage extends StatelessWidget {
                 ),
               ),
             ),
-            child: Column(
-              children: [
-                CustomListProvinsi(
-                  provinsi: 'Bengkulu',
-                  kasus_positif: 10002,
-                ),
-                CustomListProvinsi(
-                  provinsi: 'Bengkulu',
-                  kasus_positif: 10002,
-                ),
-                CustomListProvinsi(
-                  provinsi: 'Bengkulu',
-                  kasus_positif: 10002,
-                ),
-                CustomListProvinsi(
-                  provinsi: 'Bengkulu',
-                  kasus_positif: 10002,
-                ),
-                CustomListProvinsi(
-                  provinsi: 'Bengkulu',
-                  kasus_positif: 10002,
-                ),
-                CustomListProvinsi(
-                  provinsi: 'Bengkulu',
-                  kasus_positif: 10002,
-                ),
-                SizedBox(height: 100),
-              ],
-            ),
+            child: BlocConsumer<ProvinsiCubit, ProvinsiState>(
+                listener: (context, state) {
+              if (state is ProvinsiFailed) {
+                //code
+              }
+            }, builder: (context, state) {
+              return Column(
+                children: [
+                  CustomListProvinsi(
+                    provinsi: 'Bengkulu',
+                    kasus_positif: 10002,
+                  ),
+                  CustomListProvinsi(
+                    provinsi: 'Bengkulu',
+                    kasus_positif: 10002,
+                  ),
+                  CustomListProvinsi(
+                    provinsi: 'Bengkulu',
+                    kasus_positif: 10002,
+                  ),
+                  CustomListProvinsi(
+                    provinsi: 'Bengkulu',
+                    kasus_positif: 10002,
+                  ),
+                  CustomListProvinsi(
+                    provinsi: 'Bengkulu',
+                    kasus_positif: 10002,
+                  ),
+                  CustomListProvinsi(
+                    provinsi: 'Bengkulu',
+                    kasus_positif: 10002,
+                  ),
+                  SizedBox(height: 100),
+                ],
+              );
+            }),
           ),
         ],
       );
     }
 
+    Widget backgroundContent() {
+      return Container(
+        height: double.infinity,
+        width: double.infinity,
+        color: mainColor,
+      );
+    }
+
     return Stack(
       children: [
-        Container(
-          height: double.infinity,
-          width: double.infinity,
-          color: mainColor,
-        ),
+        backgroundContent(),
         headerContent(),
         bodyContent(),
       ],

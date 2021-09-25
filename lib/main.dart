@@ -1,5 +1,6 @@
 import 'package:covid_app/cubit/covid_cubit.dart';
 import 'package:covid_app/cubit/page_cubit.dart';
+import 'package:covid_app/cubit/provinsi_cubit.dart';
 import 'package:covid_app/ui/page/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CovidCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ProvinsiCubit(),
         ),
       ],
       child: MaterialApp(
