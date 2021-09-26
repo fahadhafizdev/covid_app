@@ -85,7 +85,7 @@ class _StatisticPageState extends State<StatisticPage> {
               left: 15,
               right: 15,
             ),
-            height: MediaQuery.of(context).size.height,
+            height: 2800,
             width: double.infinity,
             decoration: BoxDecoration(
               color: bgColor,
@@ -110,7 +110,11 @@ class _StatisticPageState extends State<StatisticPage> {
                   print(state.provinsiData);
                   return Column(
                     children: state.provinsiData
-                        .map((dataProvinsi) => print(dataProvinsi))
+                        .map(
+                          (dataProvinsi) => CustomListProvinsi(
+                            dataProvinsi: dataProvinsi,
+                          ),
+                        )
                         .toList(),
                   );
                 }
