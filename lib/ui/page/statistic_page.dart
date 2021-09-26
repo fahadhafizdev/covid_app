@@ -85,7 +85,6 @@ class _StatisticPageState extends State<StatisticPage> {
               left: 15,
               right: 15,
             ),
-            height: 2800,
             width: double.infinity,
             decoration: BoxDecoration(
               color: bgColor,
@@ -108,14 +107,20 @@ class _StatisticPageState extends State<StatisticPage> {
               builder: (context, state) {
                 if (state is ProvinsiSuccess) {
                   print(state.provinsiData);
+                  List<ProvinsiModel> data = state.provinsiData;
+                  // if (data.last == data.last) {
+                  //   return Container();
+                  // }
+                  int lastIndex = data.length;
+                  int index = 0;
                   return Column(
-                    children: state.provinsiData
-                        .map(
-                          (dataProvinsi) => CustomListProvinsi(
-                            dataProvinsi: dataProvinsi,
-                          ),
-                        )
-                        .toList(),
+                    children: data.map((dataProvinsi) {
+                      index++;
+                      return CustomListProvinsi(
+                        dataProvinsi: dataProvinsi,
+                        marginLast: (index == lastIndex) ? 50 : 0,
+                      );
+                    }).toList(),
                   );
                 }
                 return Center(child: CircularProgressIndicator());

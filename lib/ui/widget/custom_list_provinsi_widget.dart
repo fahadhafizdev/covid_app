@@ -4,8 +4,9 @@ import 'package:covid_app/shared/theme.dart';
 
 class CustomListProvinsi extends StatelessWidget {
   final ProvinsiModel dataProvinsi;
+  final double marginLast;
 
-  CustomListProvinsi({this.dataProvinsi});
+  CustomListProvinsi({this.dataProvinsi, this.marginLast = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class CustomListProvinsi extends StatelessWidget {
         vertical: 6,
         horizontal: 11,
       ),
-      margin: EdgeInsets.only(bottom: 27),
+      margin: EdgeInsets.only(bottom: 27 + marginLast),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [

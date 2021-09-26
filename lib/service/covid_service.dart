@@ -44,6 +44,8 @@ class CovidService {
         List<ProvinsiModel> provinsiData =
             data.map((e) => ProvinsiModel.fromJson(e)).toList();
 
+        print(provinsiData.length);
+
         return provinsiData;
       } else {
         return [];
