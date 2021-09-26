@@ -14,6 +14,7 @@ class CustomListProvinsi extends StatelessWidget {
       height: 45,
       width: 410,
       decoration: BoxDecoration(
+        border: Border.all(color: mainColor, width: 1),
         color: whiteColor,
         borderRadius: BorderRadius.circular(11),
       ),
