@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:covid_app/models/hospital_model.dart';
 import 'package:covid_app/models/provinsi_model.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/models/covid_model.dart';
@@ -47,6 +48,31 @@ class CovidService {
         print(provinsiData.length);
 
         return provinsiData;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  Future<List<HospitalModel>> fetchDataHospital() async {
+    try {
+      var response = await http.get(
+        Uri.parse('https://dekontaminasi.com/api/id/covid19/hospitals'),
+      );
+
+      print('response hospital : ${response.body}');
+      print('status code hospital : ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        List data = json.decode(response.body);
+        List<HospitalModel> dataHospital = data
+            .map(
+              (e) => HospitalModel.fromHson(e),
+            )
+            .toList();
+        return dataHospital;
       } else {
         return [];
       }
