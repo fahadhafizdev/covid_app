@@ -1,8 +1,22 @@
+import 'package:covid_app/cubit/hospital_cubit.dart';
+import 'package:covid_app/models/hospital_model.dart';
 import 'package:covid_app/ui/widget/custom_list_hospital_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class NewsPage extends StatelessWidget {
+class NewsPage extends StatefulWidget {
+  @override
+  _NewsPageState createState() => _NewsPageState();
+}
+
+class _NewsPageState extends State<NewsPage> {
+  @override
+  void initState() {
+    context.read<HospitalCubit>().fetchDataHospital();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget backgroundContent() {
@@ -88,16 +102,35 @@ class NewsPage extends StatelessWidget {
                 ),
               ),
             ),
-            child: Column(
-              children: [
-                CustomListHospital(),
-                CustomListHospital(),
-                CustomListHospital(),
-                CustomListHospital(),
-                CustomListHospital(),
-                CustomListHospital(),
-              ],
-            ),
+            child: BlocConsumer<HospitalCubit, HospitalState>(
+                listener: (context, state) {
+              if (state is HospitalFailed) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.error),
+                    backgroundColor: redColor,
+                  ),
+                );
+              }
+            }, builder: (context, state) {
+              if (state is HospitalSuccess) {
+                List<HospitalModel> dataHospital = state.dataHospital;
+                int index = 0;
+                int lastIndex = dataHospital.length;
+                return Column(
+                  children: dataHospital.map((e) {
+                    index++;
+                    return CustomListHospital(
+                      data: e,
+                      marginLast: (index == lastIndex) ? 200 : 0,
+                    );
+                  }).toList(),
+                );
+              }
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }),
           ),
         ],
       );

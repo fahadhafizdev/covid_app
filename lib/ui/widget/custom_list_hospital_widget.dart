@@ -1,12 +1,17 @@
+import 'package:covid_app/models/hospital_model.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
 
 class CustomListHospital extends StatelessWidget {
+  final HospitalModel data;
+  final double marginLast;
+
+  CustomListHospital({this.data, this.marginLast = 0});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140,
-      width: 310,
+      width: 350,
       decoration: BoxDecoration(
         border: Border.all(color: mainColor, width: 1),
         borderRadius: BorderRadius.circular(
@@ -15,7 +20,7 @@ class CustomListHospital extends StatelessWidget {
         color: whiteColor,
       ),
       padding: EdgeInsets.all(14),
-      margin: EdgeInsets.only(bottom: 21),
+      margin: EdgeInsets.only(bottom: 21 + marginLast),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -37,19 +42,23 @@ class CustomListHospital extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'DKI Jakarta',
+                    data.province,
+                    overflow: TextOverflow.ellipsis,
                     style: blackTextStyle.copyWith(
                       fontWeight: semiBold,
                       fontSize: 15,
                     ),
                   ),
                   SizedBox(height: 11),
-                  Text(
-                    'JL. TGK DAUD BEUREUEH, NO. 108 B. ACEH',
-                    overflow: TextOverflow.ellipsis,
-                    style: blackTextStyle.copyWith(
-                      fontWeight: light,
-                      fontSize: 11,
+                  Container(
+                    width: 250,
+                    child: Text(
+                      data.address,
+                      overflow: TextOverflow.clip,
+                      style: blackTextStyle.copyWith(
+                        fontWeight: light,
+                        fontSize: 11,
+                      ),
                     ),
                   ),
                 ],
@@ -58,11 +67,15 @@ class CustomListHospital extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 7),
-            child: Text(
-              'RS UMUM DAERAH  DR. ZAINOEL ABIDIN',
-              style: blackTextStyle.copyWith(
-                fontWeight: semiBold,
-                fontSize: 14,
+            child: Container(
+              width: 300,
+              child: Text(
+                data.name,
+                style: blackTextStyle.copyWith(
+                  fontWeight: semiBold,
+                  fontSize: 14,
+                ),
+                overflow: TextOverflow.clip,
               ),
             ),
           ),
@@ -78,11 +91,15 @@ class CustomListHospital extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                '(0651) 34565',
-                style: mainTextStyle.copyWith(
-                  fontWeight: medium,
-                  fontSize: 14,
+              Container(
+                width: 200,
+                child: Text(
+                  '${data.phone}',
+                  overflow: TextOverflow.clip,
+                  style: mainTextStyle.copyWith(
+                    fontWeight: medium,
+                    fontSize: 14,
+                  ),
                 ),
               )
             ],

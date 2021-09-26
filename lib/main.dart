@@ -1,4 +1,5 @@
 import 'package:covid_app/cubit/covid_cubit.dart';
+import 'package:covid_app/cubit/hospital_cubit.dart';
 import 'package:covid_app/cubit/page_cubit.dart';
 import 'package:covid_app/cubit/provinsi_cubit.dart';
 import 'package:covid_app/ui/page/main_page.dart';
@@ -23,6 +24,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ProvinsiCubit(),
+        ),
+        BlocProvider(
+          create: (context) => HospitalCubit(),
         ),
       ],
       child: MaterialApp(
