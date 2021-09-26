@@ -1,14 +1,11 @@
+import 'package:covid_app/models/provinsi_model.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/shared/theme.dart';
 
 class CustomListProvinsi extends StatelessWidget {
-  final String provinsi;
-  final int kasus_positif;
+  final ProvinsiModel dataProvinsi;
 
-  CustomListProvinsi({
-    this.provinsi,
-    this.kasus_positif,
-  });
+  CustomListProvinsi({this.dataProvinsi});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +31,7 @@ class CustomListProvinsi extends StatelessWidget {
           Container(
             width: 140,
             child: Text(
-              provinsi,
+              dataProvinsi.provinsi,
               style: blackTextStyle.copyWith(
                 fontWeight: semiBold,
                 fontSize: 14,
@@ -51,7 +48,7 @@ class CustomListProvinsi extends StatelessWidget {
                 ),
                 children: [
                   TextSpan(
-                    text: '$kasus_positif',
+                    text: '${dataProvinsi.positif}',
                     style: mainTextStyle.copyWith(
                       fontWeight: semiBold,
                       fontSize: 13,

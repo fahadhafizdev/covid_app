@@ -1,4 +1,5 @@
 import 'package:covid_app/cubit/provinsi_cubit.dart';
+import 'package:covid_app/models/provinsi_model.dart';
 import 'package:covid_app/shared/theme.dart';
 import 'package:covid_app/ui/widget/custom_list_provinsi_widget.dart';
 import 'package:flutter/material.dart';
@@ -95,48 +96,27 @@ class _StatisticPageState extends State<StatisticPage> {
               ),
             ),
             child: BlocConsumer<ProvinsiCubit, ProvinsiState>(
-                listener: (context, state) {
-              if (state is ProvinsiFailed) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(state.error),
-                  ),
-                );
-              }
-            }, builder: (context, state) {
-              if (state is ProvinsiSuccess) {
-                print(state.provinsiData);
-              }
-              return Column(
-                children: [
-                  CustomListProvinsi(
-                    provinsi: 'Bengkulu',
-                    kasus_positif: 10002,
-                  ),
-                  CustomListProvinsi(
-                    provinsi: 'Bengkulu',
-                    kasus_positif: 10002,
-                  ),
-                  CustomListProvinsi(
-                    provinsi: 'Bengkulu',
-                    kasus_positif: 10002,
-                  ),
-                  CustomListProvinsi(
-                    provinsi: 'Bengkulu',
-                    kasus_positif: 10002,
-                  ),
-                  CustomListProvinsi(
-                    provinsi: 'Bengkulu',
-                    kasus_positif: 10002,
-                  ),
-                  CustomListProvinsi(
-                    provinsi: 'Bengkulu',
-                    kasus_positif: 10002,
-                  ),
-                  SizedBox(height: 100),
-                ],
-              );
-            }),
+              listener: (context, state) {
+                if (state is ProvinsiFailed) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.error),
+                    ),
+                  );
+                }
+              },
+              builder: (context, state) {
+                if (state is ProvinsiSuccess) {
+                  print(state.provinsiData);
+                  return Column(
+                    children: state.provinsiData
+                        .map((dataProvinsi) => print(dataProvinsi))
+                        .toList(),
+                  );
+                }
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
           ),
         ],
       );
