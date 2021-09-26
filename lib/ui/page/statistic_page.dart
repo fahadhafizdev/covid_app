@@ -123,7 +123,10 @@ class _StatisticPageState extends State<StatisticPage> {
                     }).toList(),
                   );
                 }
-                return Center(child: CircularProgressIndicator());
+                return Container(
+                    height: 600,
+                    padding: EdgeInsets.only(bottom: 300),
+                    child: Center(child: CircularProgressIndicator()));
               },
             ),
           ),
