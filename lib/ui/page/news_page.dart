@@ -80,7 +80,6 @@ class NewsPage extends StatelessWidget {
               right: 15,
             ),
             width: double.infinity,
-            height: 400,
             decoration: BoxDecoration(
               color: bgColor,
               borderRadius: BorderRadius.vertical(
@@ -91,6 +90,11 @@ class NewsPage extends StatelessWidget {
             ),
             child: Column(
               children: [
+                CustomListHospital(),
+                CustomListHospital(),
+                CustomListHospital(),
+                CustomListHospital(),
+                CustomListHospital(),
                 CustomListHospital(),
               ],
             ),

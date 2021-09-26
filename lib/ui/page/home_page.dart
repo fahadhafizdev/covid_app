@@ -208,6 +208,7 @@ class _HomePageState extends State<HomePage> {
           bottom: 100,
         ),
         child: ListView(
+          physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           children: [
             CustomPrevention(
