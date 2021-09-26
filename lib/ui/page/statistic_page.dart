@@ -4,7 +4,18 @@ import 'package:covid_app/ui/widget/custom_list_provinsi_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class StatisticPage extends StatelessWidget {
+class StatisticPage extends StatefulWidget {
+  @override
+  _StatisticPageState createState() => _StatisticPageState();
+}
+
+class _StatisticPageState extends State<StatisticPage> {
+  @override
+  void initState() {
+    context.read<ProvinsiCubit>().fetchDataProvinsi();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget headerContent() {
@@ -73,6 +84,7 @@ class StatisticPage extends StatelessWidget {
               left: 15,
               right: 15,
             ),
+            height: MediaQuery.of(context).size.height,
             width: double.infinity,
             decoration: BoxDecoration(
               color: bgColor,
@@ -85,9 +97,16 @@ class StatisticPage extends StatelessWidget {
             child: BlocConsumer<ProvinsiCubit, ProvinsiState>(
                 listener: (context, state) {
               if (state is ProvinsiFailed) {
-                //code
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.error),
+                  ),
+                );
               }
             }, builder: (context, state) {
+              if (state is ProvinsiSuccess) {
+                print(state.provinsiData);
+              }
               return Column(
                 children: [
                   CustomListProvinsi(
