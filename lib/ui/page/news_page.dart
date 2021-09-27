@@ -127,9 +127,10 @@ class _NewsPageState extends State<NewsPage> {
                   }).toList(),
                 );
               }
-              return Center(
-                child: CircularProgressIndicator(),
-              );
+              return Container(
+                  height: 600,
+                  padding: EdgeInsets.only(bottom: 300),
+                  child: Center(child: CircularProgressIndicator()));
             }),
           ),
         ],

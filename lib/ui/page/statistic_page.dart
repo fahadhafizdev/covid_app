@@ -108,9 +108,7 @@ class _StatisticPageState extends State<StatisticPage> {
                 if (state is ProvinsiSuccess) {
                   print(state.provinsiData);
                   List<ProvinsiModel> data = state.provinsiData;
-                  // if (data.last == data.last) {
-                  //   return Container();
-                  // }
+
                   int lastIndex = data.length;
                   int index = 0;
                   return Column(

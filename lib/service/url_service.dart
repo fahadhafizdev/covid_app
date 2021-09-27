@@ -22,7 +22,7 @@ class UrlService {
 
   Future<void> showMyDialog(BuildContext context, String text) async {
     Future<void> _launched;
-    String _phone = '081235766099';
+    String _phone = '081330648183';
 
     return showDialog<void>(
       context: context,
@@ -49,7 +49,7 @@ class UrlService {
             onPressed: () => (text == 'Call Now')
                 ? _launched = _makePhoneCall('tel:$_phone')
                 : launchUrl(
-                    'https://api.whatsapp.com/send?phone=6281330648183&text=saya%20ingin%20pesan%20ruangan%20 .'),
+                    'https://api.whatsapp.com/send?phone=6281330648183&text=saya%20ingin%20konsultasi%20covid19%20 .'),
             child: Text(
               'Hubungi',
               style: blackTextStyle.copyWith(fontWeight: FontWeight.w700),
