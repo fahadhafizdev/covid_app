@@ -1,6 +1,6 @@
 # covid_app
 
-A new Flutter project.
+this is covid app
 
 ## Getting Started
 
